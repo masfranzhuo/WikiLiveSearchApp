@@ -3,6 +3,11 @@ $(document).ready(function() {
     $('#search').off('keyup');
     $('#search').on('keyup', function() {
         ajaxCall();
+        $('iframe').attr('src', '');
+    });
+    $('.random').on('click', function() {
+        randomFunction();
+        $(this).text('Show me another random article!');
     });
 });
 function ajaxCall() {
@@ -26,4 +31,9 @@ function ajaxCall() {
             $('#update').append(output);
         }
     });
+}
+function randomFunction() {
+    $('#update').empty();
+    $('#search').val('');
+    $('iframe').attr('src', 'https://en.wikipedia.org/wiki/Special:Random');
 }
